@@ -4,18 +4,16 @@ import Log from '../../common/log';
 
 Vue.use(VueRouter);
 
-const home = () =>
-    import ('../views/home/index.vue');
-
 const routes = [{
         path: '*',
         redirect: '/home'
     },
     {
         path: '/home',
-        component: home
+        component: resolve => require(['../views/home/index.vue'],resolve)
     }
 ];
+
 
 const router = new VueRouter({
     routes
